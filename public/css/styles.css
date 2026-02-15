@@ -1,0 +1,478 @@
+/* تطبيق خط Inter على كامل الصفحة */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(29, 78, 216, 1);
+    transition: background-color 0.4s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(6px);
+}
+
+.sticky-nav.scrolled {
+    background-color: rgba(29, 78, 216, 0.7); /* تم تعديل الشفافية لتكون 0.7 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sticky-nav .nav-link {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.sticky-nav.scrolled .nav-link {
+    color: white; /* تم تثبيت لون الروابط ليظل أبيض عند التمرير */
+}
+
+.nav-link-main::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-link-main:hover::after,
+    .nav-link-main.nav-link-active::after {
+        width: 100%;
+    }
+
+/* تنسيقات النافبار */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.nav-link {
+    @apply text-white transition-colors duration-200;
+}
+
+.dark .nav-link {
+    @apply text-gray-300 hover:text-blue-200;
+}
+
+
+.category-btn {
+    background: linear-gradient(to right, #06b6d4, #0ea5e9);
+    color: white;
+    font-weight: bold;
+    padding: 0.6rem 1rem;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.category-btn:hover {
+    background: linear-gradient(to right, #0ea5e9, #06b6d4);
+}
+.question-btn {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 0.375rem 0.625rem; /* تم تقليله من 0.5rem 0.75rem */
+    border-radius: 0.375rem;    /* زوايا أقل تقريبًا */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1e293b;
+    text-align: right;
+    width: 100%;
+    font-size: 0.875rem;        /* حجم نص أصغر قليلاً (14px) */
+    line-height: 1.25;          /* ارتفاع سطر مناسب */
+    font-weight: 500;
+}
+
+.question-btn:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* للوضع الليلي */
+body.dark .question-btn {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark .question-btn:hover {
+    background-color: #475569 !important;
+    color: #bae6fd !important;
+}
+/* الوضع الليلي - صندوق الرسائل (من البوت) */
+/* الوضع الليلي - خلفية منطقة الرسائل */
+body.dark #chat-box {
+    background-color: #1e293b !important;
+}
+
+/* الرسائل من المستخدم (يمين) - في الوضع الليلي */
+body.dark #chat-box .text-right .bg-blue-100 {
+    background-color: #2563eb !important; /* أزرق داكن ساطع */
+    color: #ffffff !important;
+    border: 1px solid #1d4ed8;
+}
+
+/* الرسائل من البوت (يسار) - في الوضع الليلي */
+body.dark #chat-box .text-left .bg-gray-100 {
+    background-color: #374151 !important; /* رمادي داكن */
+    color: #f1f5f9 !important;
+    border: 1px solid #475569;
+}
+
+/* تحسين التباين والظلال */
+body.dark #chat-box .text-left .bg-gray-100,
+body.dark #chat-box .text-right .bg-blue-100 {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* تقليل الهوامش بين الأزرار */
+#question-buttons {
+    gap: 0.375rem; /* تم تقليل المسافة بين الأزرار */
+}
+
+/* تحسين عرض منطقة الرسائل */
+#chat-box {
+    height: 360px; /* زيادة الارتفاع قليلاً إن أمكن */
+    padding: 0.5rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #f1f5f9;
+}
+
+#chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 3px;
+}
+
+#chat-box > div {
+    direction: rtl;
+    margin-bottom: 0.25rem;
+}
+
+#chat-box .text-right {
+    text-align: right;
+}
+
+#chat-box .text-left {
+    text-align: left;
+}
+.question-btn:active {
+    transform: scale(0.98);
+}
+.typing-dots::after {
+    content: '...';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+.typing::after {
+  content: '';
+  display: inline-block;
+  width: 1ch;
+  animation: dots 1s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ''; }
+  33%  { content: '.'; }
+  66%  { content: '..'; }
+  100% { content: '...'; }
+}
+
+
+/* تنسيقات أيقونة AI Agent مع حركة النبض */
+#chat-toggle {
+    position: fixed;
+    right: 5%;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #4e8dd6ff, #4abbc8ff);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    
+    /* حركة النبض */
+    animation: pulse-animation 2s infinite;
+}
+
+/* تعريف حركة النبض */
+@keyframes pulse-animation {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(110, 237, 251, 0.7);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 15px rgba(110, 195, 251, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(110, 142, 251, 0);
+    }
+}
+
+#chat-toggle:hover {
+    background: linear-gradient(135deg, #5af1f4ff, #6767d8ff);
+    animation: none; /* إيقاف الحركة عند التحويم */
+}
+
+/* التعديلات للهواتف المحمولة */
+@media (max-width: 640px) {
+    #chat-toggle {
+      width: 50px;
+      height: 50px;
+      right: 5% !important;
+      bottom: 20px !important;
+    }
+}
+
+/* بقية الأنماط الحالية */
+@media (max-width: 640px) {
+    #chat-popup {
+      width: 98vw !important;
+      right: 1vw !important;
+      bottom: 80px !important;
+      max-height: 85vh !important;
+    }
+    #chat-box {
+      height: 320px !important;
+    }
+}
+#chat-popup {
+    max-height: 700px;
+}
+#chat-box {
+    height: 460px !important;
+    background: #f8fafc;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+@media (max-height: 800px) {
+    #chat-popup {
+      max-height: 600px !important;
+    }
+    #chat-box {
+      height: 340px !important;
+    }
+}
+@media (max-height: 700px) {
+    #chat-popup {
+      max-height: 480px !important;
+    }
+    #chat-box {
+      height: 220px !important;
+    }
+}
+
+
+
+/* تنسيقات أيقونة الواتساب */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+    animation: none; /* إيقاف الحركة عند التحويم */
+}
+
+/* حركة النبض */
+@keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* أيقونة الواتساب */
+.whatsapp-icon {
+    margin-top: 4px;
+}
+
+/* نسخة للهاتف */
+@media (max-width: 768px) {
+    .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      left: 20px;
+      font-size: 25px;
+    }
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-150 { animation-delay: 0.15s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+
+
+.mobile-swiper {
+    height: 300px; /* يمكن تعديل الارتفاع حسب الحاجة */
+}
+.mobile-swiper .swiper-slide img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* الوضع الليلي العام */
+body.dark {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+
+/* الوضع الليلي لجميع الأقسام */
+body.dark section,
+body.dark footer,
+body.dark nav,
+body.dark .sticky-nav,
+body.dark .bg-white:not(.image-overlay),
+body.dark .bg-gray-50,
+body.dark .bg-gray-100,
+body.dark .bg-blue-50,
+body.dark .bg-gradient-to-b,
+body.dark .bg-gradient-to-t {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+    background-image: none !important;
+}
+
+/* الوضع الليلي للقسم الترحيبي (خلفية متدرجة) */
+body.dark #welcome {
+    background: linear-gradient(to left, #334155 0%, #1e293b 100%) !important;
+    color: #f1f5f9 !important;
+}
+
+/* شريط التنقل في الوضع الليلي */
+body.dark .sticky-nav {
+    background-color: #1e293b !important;
+}
+
+/* روابط التنقل في الوضع الليلي */
+body.dark .nav-link {
+    color: #f1f5f9 !important;
+}
+
+/* عناوين وأزرار */
+body.dark h1, 
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+    color: #f8fafc !important;
+}
+
+body.dark p,
+body.dark label,
+body.dark span,
+body.dark a,
+body.dark li {
+    color: #e2e8f0 !important;
+}
+
+body.dark .card,
+body.dark .shadow-md,
+body.dark .rounded-xl,
+body.dark .border,
+body.dark .p-6,
+body.dark .bg-white {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark .btn,
+body.dark .bg-blue-600,
+body.dark .hover\:bg-blue-700 {
+    background-color: #3b82f6 !important;
+    color: white !important;
+}
+
+/* حقول الإدخال في الوضع الليلي */
+body.dark input,
+body.dark select,
+body.dark textarea {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+/* تظليل الصور في الوضع الليلي */
+body.dark img {
+    filter: brightness(0.85) contrast(1.05);
+}
+
+/* استثناء تظليل الصورة الترحيبية من الوضع الليلي */
+body.dark .image-overlay {
+    background: none !important;
+}
+
+/* الروابط hover */
+body.dark a:hover {
+    color: #60a5fa !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.animate-pulse-slow {
+    animation: pulse 2s infinite;
+}

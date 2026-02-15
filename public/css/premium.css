@@ -1,0 +1,227 @@
+/* === Premium Design Enhancements === */
+
+/* 1. Global Premium Touches */
+body {
+    background-color: #f8fafc;
+    /* Slate-50 */
+    color: #1e293b;
+    /* Slate-800 */
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark {
+    background-color: #0f172a;
+    /* Slate-900 - Premium Dark */
+    color: #f1f5f9;
+    /* Slate-100 */
+}
+
+/* 2. Glassmorphism Utilities */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark .glass-effect {
+    background: rgba(30, 41, 59, 0.7);
+    /* Slate-800 with opacity */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Soft Colored Shadows & Hover Lift */
+.premium-card {
+    border: 1px solid rgba(241, 245, 249, 1);
+    /* Slate-100 */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.dark .premium-card {
+    background: #1e293b;
+    /* Slate-800 */
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+    /* Sky to Blue */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.2);
+    /* Sky blue glow */
+    border-color: transparent;
+}
+
+.dark .premium-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15);
+    background: #1e293b;
+}
+
+.premium-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* 4. Button Glow & Gradients */
+/* ... existing btn-glow code ... */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    /* Unified Blue Theme */
+}
+
+/* Hover shine effect */
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 25px rgba(14, 165, 233, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-glow:hover::after {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* 5. Typography */
+.text-gradient-premium {
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    /* Sky-600 to Blue-600 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.dark .text-gradient-premium {
+    background-image: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    /* Sky-400 to Indigo-400 */
+}
+
+/* 6. Unified Icon Containers */
+.icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f9ff !important;
+    /* Sky-50 enforced */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.dark .icon-box {
+    background: rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Strict Icon Color Unification */
+.icon-box i {
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-size: 2.25rem;
+    /* 36px */
+    display: inline-block;
+}
+
+.dark .icon-box i {
+    background-image: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.premium-card:hover .icon-box {
+    transform: scale(1.1);
+    background: #e0f2fe !important;
+    /* Sky-100 enforced */
+}
+
+.dark .premium-card:hover .icon-box {
+    background: rgba(56, 189, 248, 0.2) !important;
+}
+
+/* 7. Footer & Dark Sections */
+footer,
+.dark-section {
+    background: #0f172a;
+    /* Slate-900 */
+    color: #f8fafc;
+}
+
+.dark footer {
+    background: #020617;
+    /* Even darker for footer in dark mode */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 8. Modern Input Fields */
+input,
+select,
+textarea {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+    background-color: #fff;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    border-color: #38bdf8;
+    background-color: #0f172a;
+}
